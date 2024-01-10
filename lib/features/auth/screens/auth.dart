@@ -77,12 +77,12 @@ class _AuthScreenState extends State<AuthScreen> {
                           height: 10,
                         ),
                         custom_textfield(
-                            controller: _emailcontroller, hinText: 'Password'),
+                            controller: _emailcontroller, hinText: 'Email'),
                         SizedBox(
                           height: 10,
                         ),
                         custom_textfield(
-                            controller: _emailcontroller, hinText: ''),
+                            controller: _emailcontroller, hinText: 'Password'),
                         SizedBox(
                           height: 10,
                         ),
@@ -91,6 +91,9 @@ class _AuthScreenState extends State<AuthScreen> {
                     )),
               ),
             ListTile(
+              tileColor: _auth == Auth.signin
+                  ? GlobalVariables.backgroundColor
+                  : GlobalVariables.greyBackgroundCOlor,
               title: Text(
                 'sign-in.',
                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -104,7 +107,29 @@ class _AuthScreenState extends State<AuthScreen> {
                   });
                 },
               ),
-            )
+            ),
+            if (_auth == Auth.signin)
+              Container(
+                padding: EdgeInsets.all(8),
+                color: GlobalVariables.backgroundColor,
+                child: Form(
+                    key: _signupFromKey,
+                    child: Column(
+                      children: [
+                        custom_textfield(
+                            controller: _emailcontroller, hinText: 'Email'),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        custom_textfield(
+                            controller: _emailcontroller, hinText: 'Password'),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        custom_button(onTap: () {}, text: 'sign in')
+                      ],
+                    )),
+              )
           ],
         ),
       )),
