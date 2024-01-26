@@ -6,6 +6,15 @@ const PORT = 4000;
 const app = express();
 
 // creating a API
-app.listen(PORT,"0.0.0.0",()=>{
+//http://<youtipaddress>/hellow-world
+app.get("/date",(req,res)=>{
+    res.json({
+        "name":"gowtham",
+        "age":10,
+        "language_know":['tamil','english']
+    })
+})
+//an api can be GET PUT POST DELETE UPDATE --
+app.listen(PORT,()=>{
     console.log(`these is port started ${PORT}`)
 });
